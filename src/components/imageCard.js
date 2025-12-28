@@ -1,5 +1,4 @@
 export const imageCard = (image) => {
-  console.log(image);
   const imageSrc = image.urls.regular || "/mountain.jpg";
   const userSrc = image.user.profile_image.large || "/user.jpg";
   const username = image.user.name || "Unknown";

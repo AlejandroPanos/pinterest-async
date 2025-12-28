@@ -1,26 +1,3 @@
-/* Set global styles */
-* {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background-color: var(--primary-bg-color);
-  font-family: var(--font-primary);
-}
-
-.container {
-  max-width: var(--container-max-width);
-  padding: 0 var(--container-spacing);
-  margin: 0 auto;
-}
-
-button:hover {
-  cursor: pointer;
-}
-
 /* Set root styles */
 :root {
   --font-primary: "Inter Tight", "sans-serif";
@@ -56,6 +33,29 @@ button:hover {
   --border-radius-round: 50%;
   --container-max-width: 1200px;
   --container-spacing: 2rem;
+}
+
+/* Set global styles */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--primary-bg-color);
+  font-family: var(--font-primary);
+}
+
+.container {
+  max-width: var(--container-max-width);
+  padding: 0 var(--container-spacing);
+  margin: 0 auto;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 /* Set nav styles */
@@ -292,8 +292,8 @@ button:hover {
   }
 
   .is-nav-search {
-    width: 50%;
-    padding: 15px 15px;
+    width: 45%;
+    padding: 15px 10px;
   }
 
   /* Grid adjustments */
