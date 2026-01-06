@@ -1,0 +1,59 @@
+/* Set root styles */
+:root {
+  --font-primary: "Inter Tight", "sans-serif";
+  --font-white: white;
+  --font-black: black;
+  --font-gray: gray;
+  --primary-bg-color: white;
+  --secondary-bg-color: lightgray;
+  --nav-active-button-bg-color: black;
+  --nav-hover-bg-color: gainsboro;
+  --nav-active-shadow: gray;
+  --user-shadow: gray;
+  --image-button-bg-color: firebrick;
+  --font-size-96: 6rem;
+  --font-size-88: 5.5rem;
+  --font-size-80: 5rem;
+  --font-size-72: 4.5rem;
+  --font-size-64: 4rem;
+  --font-size-56: 3.5rem;
+  --font-size-48: 3rem;
+  --font-size-40: 2.5rem;
+  --font-size-32: 2rem;
+  --font-size-24: 1.5rem;
+  --font-size-20: 1.25rem;
+  --font-size-16: 1rem;
+  --font-size-12: 0.75rem;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 500;
+  --font-weight-bold: 600;
+  --primary-border-radius: 15px;
+  --border-radius-full: 100px;
+  --border-radius-round: 50%;
+  --container-max-width: 1200px;
+  --container-spacing: 2rem;
+}
+
+/* Set global styles */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--primary-bg-color);
+  font-family: var(--font-primary);
+}
+
+.container {
+  max-width: var(--container-max-width);
+  padding: 0 var(--container-spacing);
+  margin: 0 auto;
+}
+
+button:hover {
+  cursor: pointer;
+}

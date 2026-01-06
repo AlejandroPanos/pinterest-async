@@ -1,5 +1,5 @@
 /* Create imports */
-import "./styles.css";
+import "./css/styles.css";
 import { header } from "./components/header";
 import { imageGrid } from "./components/imageGrid";
 
@@ -7,10 +7,26 @@ import { imageGrid } from "./components/imageGrid";
 const app = document.querySelector("#app");
 
 /* Use elements */
-app.innerHTML = `
-    ${header()}
-    ${imageGrid()}
-`;
+app.appendChild(header());
+app.appendChild(imageGrid());
+
+/* ===== OLD CODE ===== */
+// app.innerHTML = `
+//     ${header()}
+//     ${imageGrid()}
+// `;
+
+/* Go back to inital page state */
+const logo = document.querySelector("a .logo-holder");
+logo.addEventListener("click", (e) => {
+  // Prevent browser default
+  e.preventDefault();
+
+  // Select grid and empty it
+  const gridContainer = document.querySelector("#grid");
+  const newGrid = imageGrid();
+  gridContainer.replaceWith(newGrid);
+});
 
 /* Check first search since reload */
 const wasReloaded = performance.getEntriesByType("navigation")[0].type === "reload";
@@ -24,7 +40,7 @@ if (wasReloaded) {
         <section id="grid">
             <main>
                 <div class="container">
-                    <p>Tu primera búsqueda tras refrescar fue <strong>${firstSearch}</strong>.</p>
+                    <p>Tu primera búsqueda antes de refrescar fue <strong>${firstSearch}</strong>.</p>
                 </div>
             </main>
         </section>

@@ -27,7 +27,9 @@ const searchImages = async (query) => {
     const response = await axios.get(url);
     const images = response.data.results;
     const gridContainer = document.querySelector("#grid");
-    gridContainer.innerHTML = imageGrid(images);
+
+    const newGrid = imageGrid(images);
+    gridContainer.replaceWith(newGrid);
   } catch (error) {
     console.log("An error occurred:", error);
   }

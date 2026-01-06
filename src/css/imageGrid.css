@@ -1,0 +1,26 @@
+/* Set grid styles */
+#grid {
+  margin: 3rem 0;
+}
+
+.is-card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  /* Grid adjustments */
+  .is-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile (less than 768px) */
+@media (max-width: 768px) {
+  /* Grid adjustments */
+  .is-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
