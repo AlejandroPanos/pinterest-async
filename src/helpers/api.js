@@ -1,23 +1,25 @@
 /* Create imports */
 import axios from "axios";
-import { imageGrid } from "../components/imageGrid";
+import { imageGrid } from "../components/imageGrid/imageGrid";
 
-/* Create variables */
-const navSearch = document.querySelector(".is-nav-search");
+export const setupSearch = () => {
+  const navSearch = document.querySelector(".is-nav-search");
 
-/* Add event listeners */
-navSearch.addEventListener("keypress", async (e) => {
-  if (e.key === "Enter") {
-    const query = e.target.value.trim();
-    if (query) {
-      if (!localStorage.getItem("firstSearch")) {
-        localStorage.setItem("firstSearch", query);
-      }
-      await searchImages(query);
-      e.target.value = "";
-    }
+  if (!navSearch) {
+    console.error("Search input not found!");
+    return;
   }
-});
+
+  navSearch.addEventListener("keypress", async (e) => {
+    if (e.key === "Enter") {
+      const query = e.target.value.trim();
+      if (query) {
+        await searchImages(query);
+        e.target.value = "";
+      }
+    }
+  });
+};
 
 const searchImages = async (query) => {
   const url = `https://api.unsplash.com/search/photos?client_id=${
@@ -33,4 +35,8 @@ const searchImages = async (query) => {
   } catch (error) {
     console.log("An error occurred:", error);
   }
+};
+
+export const loadInitialImages = async (query = "nature") => {
+  await searchImages(query);
 };

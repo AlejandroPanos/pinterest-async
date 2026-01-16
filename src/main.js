@@ -1,7 +1,8 @@
 /* Create imports */
 import "./css/styles.css";
-import { header } from "./components/header";
-import { imageGrid } from "./components/imageGrid";
+import { header } from "./components/header/header";
+import { imageGrid } from "./components/imageGrid/imageGrid";
+import { loadInitialImages, setupSearch } from "./helpers/api";
 
 /* Select elemtents */
 const app = document.querySelector("#app");
@@ -10,42 +11,15 @@ const app = document.querySelector("#app");
 app.appendChild(header());
 app.appendChild(imageGrid());
 
-/* ===== OLD CODE ===== */
-// app.innerHTML = `
-//     ${header()}
-//     ${imageGrid()}
-// `;
+/* Load initial images & initialise search */
+setupSearch();
+loadInitialImages("random");
 
 /* Go back to inital page state */
 const logo = document.querySelector("a .logo-holder");
-logo.addEventListener("click", (e) => {
+logo.addEventListener("click", async (e) => {
   // Prevent browser default
   e.preventDefault();
 
-  // Select grid and empty it
-  const gridContainer = document.querySelector("#grid");
-  const newGrid = imageGrid();
-  gridContainer.replaceWith(newGrid);
+  await loadInitialImages("random");
 });
-
-/* Check first search since reload */
-const wasReloaded = performance.getEntriesByType("navigation")[0].type === "reload";
-
-if (wasReloaded) {
-  const firstSearch = localStorage.getItem("firstSearch");
-
-  if (firstSearch) {
-    const gridContainer = document.querySelector("#grid");
-    gridContainer.innerHTML = `
-        <section id="grid">
-            <main>
-                <div class="container">
-                    <p>Tu primera búsqueda antes de refrescar fue <strong>${firstSearch}</strong>.</p>
-                </div>
-            </main>
-        </section>
-    `;
-  }
-
-  localStorage.removeItem("firstSearch");
-}
